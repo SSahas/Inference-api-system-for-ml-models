@@ -11,7 +11,7 @@ app = FastAPI(root_path=os.getenv("TFY_SERVICE_ROOT_PATH"))
 class PredictRequest(BaseModel):
     hf_pipeline:  str
     model_deployed_url: str
-    inputs: Dict[str, Any]
+    inputs: str
     parameters: Dict[str, Any]
 
 headers = {
