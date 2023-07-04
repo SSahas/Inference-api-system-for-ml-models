@@ -3,8 +3,9 @@ from pydantic import BaseModel
 from fastapi import FastAPI, File, UploadFile
 from typing import Dict, Any
 from payloads import payloads
+import os 
 
-app = FastAPI()
+app = FastAPI(root_path=os.getenv("TFY_SERVICE_ROOT_PATH"))
 
 
 class PredictRequest(BaseModel):
