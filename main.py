@@ -21,7 +21,7 @@ headers = {
 
 @app.post(path="/predict")
 async def text_generation(request: PredictRequest, hf_pipeline: str, model_deployed_url: str, 
-                              inputs: Dict[str, Any], parameters: Dict[str, Any]  ):
+                              inputs: str, parameters: Dict[str, Any]  ):
     
     payload = payloads(hf_pipeline)
 
