@@ -3,22 +3,14 @@ def payloads(pipeline):
     if pipeline == "text-generation":
 
         payload_text_generation = {
-            "parameters": {"content_type": "str"},
-            "inputs": [
-                {
-                    "name": "array_inputs",
-                    "shape": [1],
-                    "datatype": "BYTES",
-                    "data": ["What is alpaca? How is it different from a llama?"]
-                },
-                {
-                    "name": "max_new_tokens",
-                    "shape": [-1],
-                    "datatype": "BYTES",
-                    "data": ["20"],
-                    "parameters": {"content_type": "hg_json"}
+            "inputs": "Hello, how are you today?",
+            "parameters": {
+                    "max_new_tokens": 100,
+                    "temperature": 0.7,
+                    "top_k": 5,
+                    "top_p": 0.9,
+                    "return_full_text": True
                 }
-            ]
         }
 
         return payload_text_generation
