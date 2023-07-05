@@ -26,7 +26,7 @@ async def text_generation(request: PredictRequest):
 
     payload = payloads(request.hf_pipeline)
 
-    payload["inputs"][0]["data"] = request.inputs
+    payload["inputs"] = request.inputs
 
     response = requests.post(
         request.model_deployed_url,
