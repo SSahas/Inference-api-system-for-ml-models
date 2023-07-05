@@ -23,17 +23,50 @@ headers = {
 
 @app.post(path="/predict")
 async def text_generation(request: PredictRequest):
+    if request.hf_pipeline == "text-generation":
+    
 
-    payload = payloads(request.hf_pipeline)
+        payload = payloads(request.hf_pipeline)
 
-    payload["inputs"] = request.inputs
+        payload["inputs"] = request.inputs
 
-    response = requests.post(
-        request.model_deployed_url,
-        json=payload,
-        headers=headers
-    )
-    result = response.json()
-    return result
+        response = requests.post(
+            request.model_deployed_url,
+            json=payload,
+            headers=headers
+        )
+        result = response.json()
+        return result
+    
+    if request.hf_pipeline == "zero-shot-classification":
+
+        payload = payload(request.hf_pipeline)
+        payload["inputs"] = request.inputs
+        payload["parameters"]["candidate_labels"] = request.parameters["parameters"]["candidate_labels"]
+
+        response = requests.post(
+            request.model_deployed_url,
+            json=payload,
+            headers=headers
+        )
+        result = response.json()
+        return result
+
+    if request.hf_pipeline == "token-classification":
+
+        payload = payload(request.hf_pipeline)
+        payload["inputs"][0]["data"] = request.inputs
+
+        response = requests.post(
+            request.model_deployed_url,
+            json=payload,
+            headers=headers
+        )
+        result = response.json()
+        return result
+    
+    
 
 
+
+        
