@@ -4,4 +4,4 @@
 
 - > Run the inference.py file, with this code we can send inputs for the models locally from our pc  and it gets the output just like huggingface inference api system.
 
-- > Wrote fastapi service for three different pipelines "text-gneration", "token-classification", "zer-shot-clssification".
+- > Wrote fastapi service for three different pipelines "text-generation", "token-classification", "zer-shot-clssification".
