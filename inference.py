@@ -3,7 +3,7 @@ from urllib.parse import urljoin
 import requests
 
 
-ENDPOINT_URL = "https://intern-sahas-intern-sriram-8000.demo1.truefoundry.com/predict/"
+ENDPOINT_URL = "https://sriram-intern-sriram-8000.demo1.truefoundry.com/predict/"
 
 headers = {
     "Content-Type": "application/json",
