@@ -38,7 +38,7 @@ async def text_generation(request: PredictRequest):
         result = response.json()
         return result
     
-    if request.hf_pipeline == "zero-shot-classification":
+    elif request.hf_pipeline == "zero-shot-classification":
 
         payload = payload(request.hf_pipeline)
         payload["inputs"] = request.inputs
@@ -52,7 +52,7 @@ async def text_generation(request: PredictRequest):
         result = response.json()
         return result
 
-    if request.hf_pipeline == "token-classification":
+    elif request.hf_pipeline == "token-classification":
 
         payload = payload(request.hf_pipeline)
         payload["inputs"][0]["data"] = request.inputs
@@ -64,6 +64,13 @@ async def text_generation(request: PredictRequest):
         )
         result = response.json()
         return result
+    else:
+
+        return ValueError("invalid payload inputs") 
+
+
+
+
     
     
 
